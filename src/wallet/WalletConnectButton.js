@@ -115,8 +115,8 @@ export const CustomConnectButton = () => {
   return (
     <>
       <Button
-        key={wallets[0].name}
-        onClick={() => handleConnect(wallets[0])}
+        key={wallets?.[0]?.name}
+        onClick={() => handleConnect(wallets?.[0])}
         px="20px"
         variant="brand"
         fontWeight="500"

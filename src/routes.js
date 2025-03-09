@@ -18,15 +18,46 @@ import RTL from 'views/admin/rtl';
 
 // Auth Imports
 import SignInCentered from 'views/auth/signIn';
+import UploadModel from 'views/upload/models';
+import UploadDataset from 'views/upload/dataset';
 
 const routes = [
+  // {
+  //   name: 'Main Dashboard',
+  //   layout: '/admin',
+  //   path: '/default',
+  //   icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
+  //   component: <MainDashboard />,
+  // },
   {
     name: 'Main Dashboard',
     layout: '/admin',
     path: '/default',
-    icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
-    component: <MainDashboard />,
+    icon: (
+      <Icon
+        as={MdOutlineShoppingCart}
+        width="20px"
+        height="20px"
+        color="inherit"
+      />
+    ),
+    component: <NFTMarketplace />,
   },
+  {
+    name: 'New Model',
+    layout: '/admin',
+    path: '/upload/models',
+    icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
+    component: <UploadModel />,
+  },
+  {
+    name: 'New Dataset',
+    layout: '/admin',
+    path: '/upload/dataset',
+    icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
+    component: <UploadDataset />,
+  },
+
   {
     name: 'NFT Marketplace',
     layout: '/admin',
@@ -56,20 +87,20 @@ const routes = [
     icon: <Icon as={MdPerson} width="20px" height="20px" color="inherit" />,
     component: <Profile />,
   },
-  {
-    name: 'Sign In',
-    layout: '/auth',
-    path: '/sign-in',
-    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
-    component: <SignInCentered />,
-  },
-  {
-    name: 'RTL Admin',
-    layout: '/rtl',
-    path: '/rtl-default',
-    icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
-    component: <RTL />,
-  },
+  // {
+  //   name: 'Sign In',
+  //   layout: '/auth',
+  //   path: '/sign-in',
+  //   icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
+  //   component: <SignInCentered />,
+  // },
+  // {
+  //   name: 'RTL Admin',
+  //   layout: '/rtl',
+  //   path: '/rtl-default',
+  //   icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
+  //   component: <RTL />,
+  // },
 ];
 
 export default routes;
