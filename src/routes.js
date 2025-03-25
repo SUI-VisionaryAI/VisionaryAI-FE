@@ -20,6 +20,7 @@ import RTL from 'views/admin/rtl';
 import SignInCentered from 'views/auth/signIn';
 import UploadModel from 'views/upload/models';
 import UploadDataset from 'views/upload/dataset';
+import ModelDetail from 'views/admin/ModelDetail';
 
 const routes = [
   // {
@@ -86,6 +87,12 @@ const routes = [
     path: '/profile',
     icon: <Icon as={MdPerson} width="20px" height="20px" color="inherit" />,
     component: <Profile />,
+  },
+  {
+    name: 'Profile',
+    layout: '/admin',
+    path: '/model/:id',
+    component: <ModelDetail />,
   },
   // {
   //   name: 'Sign In',

@@ -1,6 +1,6 @@
 [
     {
-      "id": "johndoe/gpt-math-helper",
+      "id": "4f9c1a0e-5b69-4f02-91f5-1c6a3493b9ab",
       "name": "gpt-math-helper",
       "owner": "johndoe",
       "description": "A GPT model fine-tuned for solving grade-school and high-school level math problems.",
@@ -20,7 +20,7 @@
       }
     },
     {
-      "id": "alice/vision-cat-detector",
+      "id": "b41f68cf-d16e-4e84-9b19-28e238d71b6c",
       "name": "vision-cat-detector",
       "owner": "alice",
       "description": "A computer vision model that detects cats in images using YOLOv5.",
@@ -40,7 +40,7 @@
       }
     },
     {
-      "id": "quantdev/stock-predictor-lstm",
+      "id": "8b0717bb-5df6-471c-b9b4-68d2eb9b8d7f",
       "name": "stock-predictor-lstm",
       "owner": "quantdev",
       "description": "An LSTM model trained on historical stock prices to forecast future trends.",
@@ -60,7 +60,7 @@
       }
     },
     {
-      "id": "voiceai/tts-female-en",
+      "id": "d6e7a168-32d2-4d08-a731-e488c58fa8c3",
       "name": "tts-female-en",
       "owner": "voiceai",
       "description": "A realistic English TTS model trained on high-quality female voice data.",

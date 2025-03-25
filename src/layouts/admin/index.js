@@ -102,6 +102,7 @@ export default function Dashboard(props) {
       }
     });
   };
+  const getSidebarRoute = routes.filter(e => ["/admin/default"].includes(`${e?.layout}${e?.path}`))
   document.documentElement.dir = 'ltr';
   const { onOpen } = useDisclosure();
   document.documentElement.dir = 'ltr';
@@ -114,7 +115,7 @@ export default function Dashboard(props) {
             setToggleSidebar,
           }}
         >
-          <Sidebar routes={routes} display="none" {...rest} />
+          <Sidebar routes={getSidebarRoute} display="none" {...rest} />
           <Box
             float="right"
             minHeight="100vh"

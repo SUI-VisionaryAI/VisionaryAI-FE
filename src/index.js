@@ -5,7 +5,12 @@ import './assets/css/App.css';
 
 import App from './App';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ConnectButton, SuiClientProvider, WalletProvider } from '@mysten/dapp-kit';
+import {
+  ConnectButton,
+  SuiClientProvider,
+  WalletProvider,
+} from '@mysten/dapp-kit';
+import { AppProvider } from 'contexts/AppContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
@@ -13,10 +18,12 @@ root.render(
   <BrowserRouter>
     <QueryClientProvider client={queryClient}>
       <SuiClientProvider>
-        <WalletProvider>
-          <App />
-          {/* <ConnectButton />; */}
-        </WalletProvider>
+        <AppProvider>
+          <WalletProvider>
+            <App />
+            {/* <ConnectButton />; */}
+          </WalletProvider>
+        </AppProvider>
       </SuiClientProvider>
     </QueryClientProvider>
   </BrowserRouter>,
