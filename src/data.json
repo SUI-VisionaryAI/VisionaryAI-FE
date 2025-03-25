@@ -1,0 +1,83 @@
+[
+    {
+      "id": "johndoe/gpt-math-helper",
+      "name": "gpt-math-helper",
+      "owner": "johndoe",
+      "description": "A GPT model fine-tuned for solving grade-school and high-school level math problems.",
+      "tags": ["gpt", "math", "text-generation", "education"],
+      "private": false,
+      "license": "mit",
+      "createdAt": "2025-03-24T14:00:00Z",
+      "updatedAt": "2025-03-25T08:45:00Z",
+      "framework": "transformers",
+      "task": "text-generation",
+      "language": "en",
+      "version": "v1.1.0",
+      "downloads": 4869,
+      "likes": 241,
+      "inference": {
+        "endpoint": "https://api.yourdomain.com/inference/gpt-math-helper"
+      }
+    },
+    {
+      "id": "alice/vision-cat-detector",
+      "name": "vision-cat-detector",
+      "owner": "alice",
+      "description": "A computer vision model that detects cats in images using YOLOv5.",
+      "tags": ["vision", "object-detection", "cats", "yolov5"],
+      "private": false,
+      "license": "apache-2.0",
+      "createdAt": "2025-02-12T09:10:00Z",
+      "updatedAt": "2025-03-01T17:30:00Z",
+      "framework": "pytorch",
+      "task": "object-detection",
+      "language": null,
+      "version": "v2.0.0",
+      "downloads": 13200,
+      "likes": 540,
+      "inference": {
+        "endpoint": "https://api.yourdomain.com/inference/vision-cat-detector"
+      }
+    },
+    {
+      "id": "quantdev/stock-predictor-lstm",
+      "name": "stock-predictor-lstm",
+      "owner": "quantdev",
+      "description": "An LSTM model trained on historical stock prices to forecast future trends.",
+      "tags": ["time-series", "finance", "lstm", "stocks"],
+      "private": true,
+      "license": "proprietary",
+      "createdAt": "2024-11-10T12:45:00Z",
+      "updatedAt": "2025-01-02T10:30:00Z",
+      "framework": "tensorflow",
+      "task": "time-series-forecasting",
+      "language": "en",
+      "version": "v3.3.2",
+      "downloads": 210,
+      "likes": 39,
+      "inference": {
+        "endpoint": "https://api.yourdomain.com/inference/stock-predictor-lstm"
+      }
+    },
+    {
+      "id": "voiceai/tts-female-en",
+      "name": "tts-female-en",
+      "owner": "voiceai",
+      "description": "A realistic English TTS model trained on high-quality female voice data.",
+      "tags": ["tts", "speech", "english", "female-voice"],
+      "private": false,
+      "license": "cc-by-4.0",
+      "createdAt": "2025-03-10T16:20:00Z",
+      "updatedAt": "2025-03-22T14:00:00Z",
+      "framework": "onnx",
+      "task": "text-to-speech",
+      "language": "en",
+      "version": "v1.0.5",
+      "downloads": 7543,
+      "likes": 310,
+      "inference": {
+        "endpoint": "https://api.yourdomain.com/inference/tts-female-en"
+      }
+    }
+  ]
+  

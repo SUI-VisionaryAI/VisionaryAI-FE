@@ -7,17 +7,19 @@ import {
   MenuList,
   Text,
   useColorModeValue,
+  useToast,
 } from '@chakra-ui/react';
 import {
   useConnectWallet,
   useCurrentAccount,
   useDisconnectWallet,
-  useWallet,
   useWallets,
 } from '@mysten/dapp-kit';
 import { addressShortener } from 'utils';
+import { useEffect } from 'react';
 
 export const CustomConnectButton = () => {
+  const toast = useToast();
   const { mutate: connect, isError, error } = useConnectWallet();
   const currentAccount = useCurrentAccount();
   const { mutate: disconnect } = useDisconnectWallet();
@@ -38,6 +40,19 @@ export const CustomConnectButton = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (isError && error) {
+      toast({
+        title: 'Connection Error',
+        description: error.message || 'Something went wrong.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  }, [isError, error, toast]);
+
   const shadow = useColorModeValue(
     '14px 17px 40px 4px rgba(112, 144, 176, 0.18)',
     '14px 17px 40px 4px rgba(112, 144, 176, 0.06)',
@@ -123,7 +138,6 @@ export const CustomConnectButton = () => {
       >
         Connect Wallet
       </Button>
-      {isError && <p>Error: {error.message}</p>}
     </>
   );
 };
