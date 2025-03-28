@@ -5,8 +5,40 @@ import { Button, Flex, Link, Text } from "@chakra-ui/react";
 
 // Assets
 import banner from "assets/img/nfts/NftBanner1.png";
+import { useCreateNewModelMutation, useMintModelMutation } from "wallet/blockchain";
+import { useCurrentAccount, useSuiClientInfiniteQuery } from "@mysten/dapp-kit";
 
 export default function Banner() {
+  const { mutate: createNewModelMutation, isPending: pendingCancellation, da } = useCreateNewModelMutation()
+  const { mutate: mintModelMutation } = useMintModelMutation()
+  const currentAccount = useCurrentAccount();
+  const clickCreateBtn = async () => {
+    console.log(currentAccount, 'currentAccountcurrentAccount');
+    const res = await createNewModelMutation({object:{totalSupply: '123', metadataUrl: "fddfdfd",burnable: false, price: '123', recipientAddress: currentAccount?.address}},{
+      onSuccess: (result) => {
+        console.log("Transaction result:", result);
+      },
+    },)
+    // const res = await mintModelMutation({object: {modelMetadataId: "0x35b2b05fe6d954f1f1e4254c51e4b00e6b20625d7d5d927ffe4bf95f53172e16", paymentAmount: 123}})
+    console.log(res, 'resresres');
+    
+  }
+
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useSuiClientInfiniteQuery(
+      "getOwnedObjects",
+      {
+      
+        owner: currentAccount?.address,
+        options: {
+          showContent: true,
+          showOwner: true,
+        },
+      },
+     
+    );
+    console.log(data, 'datadataobject');
+    
   // Chakra Color Mode
   return (
     <Flex
@@ -59,6 +91,7 @@ export default function Banner() {
           fontWeight='500'
           fontSize='14px'
           py='20px'
+          onClick={clickCreateBtn}
           px='27'
           me='38px'>
           Discover now
