@@ -80,7 +80,7 @@ export const CustomConnectButton = () => {
             bg={menuBg}
             border="none"
           >
-            <Flex w="100%" mb="0px">
+            {/* <Flex w="100%" mb="0px">
               <Text
                 ps="20px"
                 pt="16px"
@@ -92,27 +92,21 @@ export const CustomConnectButton = () => {
                 fontWeight="700"
                 color={textColor}
               >
-                👋&nbsp; Hey, Adela
+                
               </Text>
-            </Flex>
+            </Flex> */}
             <Flex flexDirection="column" p="10px">
               <MenuItem
+                bg="none"
                 _hover={{ bg: 'none' }}
                 _focus={{ bg: 'none' }}
                 borderRadius="8px"
                 px="14px"
               >
-                <Text fontSize="sm">Profile Settings</Text>
+                <Text fontSize="sm">Settings</Text>
               </MenuItem>
               <MenuItem
-                _hover={{ bg: 'none' }}
-                _focus={{ bg: 'none' }}
-                borderRadius="8px"
-                px="14px"
-              >
-                <Text fontSize="sm">Newsletter Settings</Text>
-              </MenuItem>
-              <MenuItem
+                bg="none"
                 _hover={{ bg: 'none' }}
                 _focus={{ bg: 'none' }}
                 color="red.400"

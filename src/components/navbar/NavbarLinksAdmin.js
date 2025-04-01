@@ -14,6 +14,9 @@ import {
   useColorModeValue,
   useColorMode,
 } from '@chakra-ui/react';
+import { MdFileUpload } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+
 // Custom Components
 import { ItemContent } from 'components/menu/ItemContent';
 // import { SearchBar } from 'components/navbar/searchBar/SearchBar';
@@ -27,6 +30,7 @@ import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 import { FaEthereum } from 'react-icons/fa';
 import routes from 'routes';
 import { CustomConnectButton } from 'wallet/WalletConnectButton';
+import { useCurrentAccount } from '@mysten/dapp-kit';
 export default function HeaderLinks(props) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
@@ -44,6 +48,9 @@ export default function HeaderLinks(props) {
     '14px 17px 40px 4px rgba(112, 144, 176, 0.06)',
   );
   // const borderButton = useColorModeValue('secondaryGray.500', 'whiteAlpha.200');
+  const currentAccount = useCurrentAccount();
+  const navigate = useNavigate();
+
   return (
     <Flex
       w={{ sm: '100%', md: 'auto' }}
@@ -210,6 +217,56 @@ export default function HeaderLinks(props) {
           </Flex>
         </MenuList>
       </Menu> */}
+      {currentAccount && (
+        <Menu>
+          <MenuButton px="10px" fontWeight="500">
+            <MdFileUpload h="18px" w="18px" color={navbarIcon} />
+          </MenuButton>
+          <Flex flexDirection="column" p="10px"></Flex>
+          <MenuList
+            boxShadow={shadow}
+            p="0px"
+            mt="10px"
+            borderRadius="20px"
+            bg={menuBg}
+            border="none"
+          >
+            <MenuItem
+              bg="none"
+              _hover={{ bg: 'none' }}
+              _focus={{ bg: 'none' }}
+              borderRadius="8px"
+              px="14px"
+              onClick={() => navigate('/admin/upload/models')}
+            >
+              <Text fontSize="sm">Upload model</Text>
+            </MenuItem>
+            <MenuItem
+              bg="none"
+              _hover={{ bg: 'none' }}
+              _focus={{ bg: 'none' }}
+              borderRadius="8px"
+              px="14px"
+              onClick={() => navigate('/admin/upload/dataset')}
+            >
+              <Text fontSize="sm">Upload dataset</Text>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+        // <Button
+        //   variant="no-hover"
+        //   bg="transparent"
+        //   p="0px"
+        //   minW="unset"
+        //   minH="unset"
+        //   h="18px"
+        //   w="max-content"
+        //   onClick={() => {}}
+        //   px="10px"
+        // >
+        //   <MdFileUpload h="18px" w="18px" color={navbarIcon} />
+        // </Button>
+      )}
 
       <Button
         variant="no-hover"
