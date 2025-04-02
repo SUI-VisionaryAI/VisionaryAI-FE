@@ -9,18 +9,34 @@ import {
   ConnectButton,
   SuiClientProvider,
   WalletProvider,
+  createNetworkConfig,
 } from '@mysten/dapp-kit';
+import { Toaster } from 'react-hot-toast';
+import { getFullnodeUrl } from '@mysten/sui/client';
 import { AppProvider } from 'contexts/AppContext';
+
+const { networkConfig } = createNetworkConfig({
+  testnet: {
+    url: getFullnodeUrl('testnet'),
+  },
+  mainnet: {
+    url: getFullnodeUrl('mainnet'),
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 root.render(
   <BrowserRouter>
     <QueryClientProvider client={queryClient}>
-      <SuiClientProvider>
+      <SuiClientProvider networks={networkConfig}>
         <AppProvider>
-          <WalletProvider>
+          <WalletProvider
+            defaultNetwork="testnet"
+            autoConnect={false}
+          >
             <App />
+            <Toaster position="top-center" />
             {/* <ConnectButton />; */}
           </WalletProvider>
         </AppProvider>
