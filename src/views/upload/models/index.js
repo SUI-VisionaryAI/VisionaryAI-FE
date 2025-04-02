@@ -156,7 +156,7 @@ const ModelDetailsStep = ({ formData, setFormData, nextStep }) => {
         </Stack>
       </FormControl>
 
-      <Button colorScheme="teal" onClick={nextStep}>
+      <Button variant="solid" color="brand.500" onClick={nextStep}>
         Next
       </Button>
     </VStack>

@@ -9,10 +9,24 @@ const AppContext = createContext();
 
 // Context provider
 export const AppProvider = ({ children }) => {
-  const [viewMode, setViewMode] = useState(GRID_MODE); // default: grid
-
+  const [viewMode, setViewMode] = useState(GRID_MODE);
+  const [accounts, setAccounts] = useState([]);
+  const [currentAccount, setCurrentAccount] = useState(null);
+  const [wallets, setWallets] = useState([]);
+  
   return (
-    <AppContext.Provider value={{ viewMode, setViewMode }}>
+    <AppContext.Provider
+      value={{
+        viewMode,
+        setViewMode,
+        accounts,
+        setAccounts,
+        currentAccount,
+        setCurrentAccount,
+        wallets,
+        setWallets,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
