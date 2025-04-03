@@ -13,6 +13,8 @@ import {
   Text,
   useColorModeValue,
   useColorMode,
+  IconButton,
+  CircularProgress,
 } from '@chakra-ui/react';
 import { MdFileUpload } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
@@ -31,9 +33,11 @@ import { FaEthereum } from 'react-icons/fa';
 import routes from 'routes';
 import { CustomConnectButton } from 'wallet/WalletConnectButton';
 import { useCurrentAccount } from '@mysten/dapp-kit';
+import { useUpload } from 'contexts/UploadContext';
 export default function HeaderLinks(props) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
+  const { uploads } = useUpload();
   // Chakra Color Mode
   const navbarIcon = useColorModeValue('gray.400', 'white');
   let menuBg = useColorModeValue('white', 'navy.800');
@@ -50,6 +54,11 @@ export default function HeaderLinks(props) {
   // const borderButton = useColorModeValue('secondaryGray.500', 'whiteAlpha.200');
   const currentAccount = useCurrentAccount();
   const navigate = useNavigate();
+  const activeUploads = uploads.filter((u) => u.status === 'uploading');
+  // if (activeUploads.length === 0) return null;
+
+  const totalProgress = activeUploads.reduce((sum, u) => sum + u.progress, 0);
+  const averageProgress = Math.round(totalProgress / activeUploads.length);
 
   return (
     <Flex
@@ -217,6 +226,24 @@ export default function HeaderLinks(props) {
           </Flex>
         </MenuList>
       </Menu> */}
+      {activeUploads.length > 0 && (
+        <IconButton
+          onClick={() => {}}
+          borderRadius="full"
+          size="lg"
+          bg="white"
+          aria-label="Upload Progress"
+          icon={
+            <CircularProgress
+              value={averageProgress}
+              color="blue.500"
+              size="40px"
+              thickness="10px"
+            ></CircularProgress>
+          }
+        />
+      )}
+
       {currentAccount && (
         <Menu>
           <MenuButton px="10px" fontWeight="500">
@@ -271,10 +298,9 @@ export default function HeaderLinks(props) {
       <Button
         variant="no-hover"
         bg="transparent"
-        p="0px"
+        p="8px"
         minW="unset"
         minH="unset"
-        h="18px"
         w="max-content"
         onClick={toggleColorMode}
       >

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import { UploadProvider } from './UploadContext';
 
 // Mode constants
 export const GRID_MODE = 0;
@@ -13,7 +14,7 @@ export const AppProvider = ({ children }) => {
   const [accounts, setAccounts] = useState([]);
   const [currentAccount, setCurrentAccount] = useState(null);
   const [wallets, setWallets] = useState([]);
-  
+
   return (
     <AppContext.Provider
       value={{
@@ -27,7 +28,7 @@ export const AppProvider = ({ children }) => {
         setWallets,
       }}
     >
-      {children}
+      <UploadProvider>{children}</UploadProvider>
     </AppContext.Provider>
   );
 };
